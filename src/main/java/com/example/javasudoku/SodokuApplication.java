@@ -8,13 +8,18 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class SodokuApplication extends Application {
+
+    private IUserInterfaceContract.View uiImpl;
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(SodokuApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();
+        uiImpl = new UserInterfaceImpl(primaryStage);
+
+        try {
+            sudokuBuildLogic.build(uiImpl);
+        } catch (IOException e){
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     public static void main(String[] args) {
