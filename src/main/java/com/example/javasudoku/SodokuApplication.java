@@ -1,5 +1,6 @@
 package com.example.javasudoku;
 
+import com.example.javasudoku.userInterface.UserInterfaceImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,9 +10,9 @@ import java.io.IOException;
 
 public class SodokuApplication extends Application {
 
-    private IUserInterfaceContract.View uiImpl;
+    private UserInterfaceImpl uiImpl;
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage primaryStage) throws IOException {
         uiImpl = new UserInterfaceImpl(primaryStage);
 
         try {
@@ -23,6 +24,6 @@ public class SodokuApplication extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }
